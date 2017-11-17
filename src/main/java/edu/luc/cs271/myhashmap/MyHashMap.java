@@ -89,9 +89,18 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public V put(final K key, final V value) {
-    // TODO follow basic approach of remove below (this will be similar)
+    // DONE follow basic approach of remove below (this will be similar)
     final int index = calculateIndex(key);
-
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
+      if (entry.getKey().equals(key)) {
+        final V oldValue = entry.getValue();
+        entry = value; //OR entry.getValue() = value;
+        iter.remove();
+        return oldValue;
+      }
+    }
 
     return null;
   }
@@ -114,6 +123,9 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public void putAll(final Map<? extends K, ? extends V> m) {
     // TODO add each entry in m's entrySet
+    for (Map.Entry<? extends K, ? extends V> entry : m.entrySet()) {
+      newMap.put(entry.getKey(), entry.getValue());
+    }
 
 
   }

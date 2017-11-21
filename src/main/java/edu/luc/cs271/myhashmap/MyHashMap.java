@@ -21,8 +21,8 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   public MyHashMap(final int tableSize) {
     // allocate a table of the given size
-    table = new ArrayList<>(tableSize);
     // then create an empty chain at each position
+    table = new ArrayList<>(tableSize);
     for (int i = 0; i < tableSize; i += 1) {
       table.add(new LinkedList<>());
     }
@@ -50,26 +50,12 @@ public class MyHashMap<K, V> implements Map<K, V> {
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
-      if (entry.getKey().equals(key)) {
+      if (entry.getKey() == key) {
         return true;
       }
     }
     return false;
   }
-
-  /* public V remove(final Object key) {
-    final int index = calculateIndex(key);
-    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
-    while (iter.hasNext()) {
-      final Entry<K, V> entry = iter.next();
-      if (entry.getKey().equals(key)) {
-        final V oldValue = entry.getValue();
-        iter.remove();
-        return oldValue;
-      }
-    }
-    return null;
-  } */
 
   @Override
   public boolean containsValue(final Object value) {
@@ -141,8 +127,8 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public void putAll(final Map<? extends K, ? extends V> m) {
     // DONE add each entry in m's entrySet
-    for (Map.Entry<? extends K, ? extends V> entry : m.entrySet()) {
-      this.put(entry.getKey(), entry.getValue());
+    for (Entry<? extends K, ? extends V> entry : m.entrySet()) {
+      put(entry.getKey(), entry.getValue());
     }
   }
 

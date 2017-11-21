@@ -31,8 +31,10 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public int size() {
     // DONE add the sizes of all the chains
-    int result = table.size() % DEFAULT_TABLE_SIZE;
-
+    int result = 0;
+    for(int i = 0; i < DEFAULT_TABLE_SIZE; i++){
+      result += table.get(i).size();
+    }
     return result;
   }
 
@@ -91,8 +93,8 @@ public class MyHashMap<K, V> implements Map<K, V> {
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getKey().equals(key)) {
-        final V oldValue = entry.getValue();
-        return oldValue;
+        final V keyValue = entry.getValue();
+        return keyValue;
       }
     }
 
@@ -107,10 +109,14 @@ public class MyHashMap<K, V> implements Map<K, V> {
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getKey().equals(key)) {
-        V oldValue = entry.value;
-        entry.value = value;
-        return oldValue;
-        
+        if (entry.getValue() != null) {
+          entry.setValue(value);
+          return entry.getValue();
+        }
+        else {
+          entry.setValue(value);
+          return null;
+        }
       }
     }
 
@@ -202,8 +208,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
       final Iterator<Entry<K, V>> iter = table.get(i).iterator();
       while (iter.hasNext()) {
         Entry<K, V> tempVal = iter.next();
-        System.out.println("Key: " + tempVal.getKey());
-        System.out.println("value: " + tempVal.getValue());
+        System.out.println(tempVal.getKey() + " " + tempVal.getValue());
       }
     }
     return "";

@@ -19,11 +19,11 @@ public class MyHashMap<K, V> implements Map<K, V> {
     this(DEFAULT_TABLE_SIZE);
   }
 
-  public MyHashMap(final int DEFAULT_TABLE_SIZE) {
+  public MyHashMap(final int tableSize) {
     // allocate a table of the given size
     // then create an empty chain at each position
-    table = new ArrayList<>(DEFAULT_TABLE_SIZE);
-    for (int i = 0; i < DEFAULT_TABLE_SIZE; i += 1) {
+    table = new ArrayList<>(tableSize);
+    for (int i = 0; i < tableSize; i += 1) {
       table.add(new LinkedList<>());
     }
   }
@@ -60,8 +60,10 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public boolean containsValue(final Object value) {
 
-    for (List<Entry<K, V>> index : table) {
-      for (Entry<K, V> entry : index) {
+    for (int i = 0; i < table.size(); i += 1) {
+      final Iterator<Entry<K, V>> iter = table.get(i).iterator();
+      while (iter.hasNext()) {
+        final Entry<K, V> entry = iter.next();
         if (entry.getValue().equals(value)) {
           return true;
         }

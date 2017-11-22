@@ -88,10 +88,11 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public V put(final K key, final V value) {
     // TODO follow basic approach of remove below (this will be similar)
     final int index = calculateIndex(key);
-
-    for (Entry<K, V> entry : table.get(index)) {
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
       if (entry.getKey().equals(key)) {
-        V oldValue = entry.getValue();
+        final V oldValue = entry.getValue();
         entry.setValue(value);
         return oldValue;
       }
@@ -198,7 +199,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
     } else if (!(that instanceof Map)) {
       return false;
     } else {
-      return this.entrySet().equals(((Map) that).entrySet());
+      return ((Map) that).entrySet().equals(this.entrySet());
     }
   }
 

@@ -11,4 +11,4 @@
 - What is the time complexity of `MyHashMap.size()`, and how could you make it much more efficient?
   - Time complexity is O(n). You could make it more efficient by increasing size everytime you add an item.
 - How does this implementation compare to one where you would directly use your linked `Node` class from the earlier assignment? Answer briefly in terms of ease of implementation, correctness, reliability, and performance.
-  - Both are realiable, but as far as implementaion, linked node class was easier to implement. The upside to a more in-depth implementation is that allows for better performance in MyHasMap. 
+  - Both are realiable, but as far as implementation, linked node class was easier to implement. The upside to a more in-depth implementation is that it allows for a better performance in MyHasMap. 

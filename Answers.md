@@ -1,6 +1,6 @@
 - Try using a `TreeMap` and a `HashMap` instead of `MyHashMap`.
   1. Are the resulting word frequencies any different?
-      - The resulting word frequencies are different only for MyHashMap, not sure why though.
+      - The resulting word frequencies are not different
   1. Is the time performance any different? If so, how would you rank the three implementations (in increasing order of time complexity)?
     - Time performance is different. I would rank them as follows:
       - First: HashMap

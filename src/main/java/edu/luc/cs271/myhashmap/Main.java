@@ -9,6 +9,7 @@ public class Main {
     final Scanner input = new Scanner(System.in).useDelimiter("[^\\p{Alnum}]+");
     // DONE measure the performance for MyHashMap, HashMap, and TreeMap several times each!
     final Map<String, Integer> counts = new MyHashMap<>(6007); // a prime number!
+    // have to format when testing HashMap and TreeMap below in order to build
     // final Map<String, Integer> counts = new HashMap<>(6007);
     // final Map<String, Integer> counts = new TreeMap<>();
     final long time0 = System.currentTimeMillis(); // current time

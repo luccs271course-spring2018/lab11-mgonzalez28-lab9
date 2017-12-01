@@ -32,7 +32,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public int size() {
     // DONE add the sizes of all the chains
     int result = 0;
-    for (int i = 0; i < table.size(); i++) { // i < DEFAULT_TABLE_SIZE
+    for (int i = 0; i < table.size(); i++) {
       result += table.get(i).size();
     }
     return result;
@@ -131,7 +131,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public void clear() {
     // DONE clear each chain
-    for (int i = 0; i < table.size(); i++) { // i < DEFAULT_TABLE_SIZE
+    for (int i = 0; i < table.size(); i++) {
       table.set(i, new LinkedList<>());
     }
   }
@@ -141,7 +141,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public Set<K> keySet() {
     final Set<K> result = new HashSet<>();
     // DONE populate the set
-    for (int i = 0; i < table.size(); i++) { // i < DEFAULT_TABLE_SIZE
+    for (int i = 0; i < table.size(); i++) {
       final Iterator<Entry<K, V>> iter = table.get(i).iterator();
       while (iter.hasNext()) {
         Entry<K, V> tempKey = iter.next();
@@ -156,7 +156,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public Collection<V> values() {
     final List<V> result = new LinkedList<>();
     // DONE populate the list
-    for (int i = 0; i < table.size(); i++) { // i < DEFAULT_TABLE_SIZE
+    for (int i = 0; i < table.size(); i++) {
       final Iterator<Entry<K, V>> iter = table.get(i).iterator();
       while (iter.hasNext()) {
         Entry<K, V> tempVal = iter.next();
@@ -172,7 +172,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public Set<Entry<K, V>> entrySet() {
     final Set<Entry<K, V>> result = new HashSet<>();
     // DONE populate the set
-    for (int i = 0; i < table.size(); i++) { // i < DEFAULT_TABLE_SIZE
+    for (int i = 0; i < table.size(); i++) {
       final Iterator<Entry<K, V>> iter = table.get(i).iterator();
       while (iter.hasNext()) {
         Entry<K, V> tempVal = iter.next();
@@ -185,7 +185,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public String toString() {
     // DONE return the string representation of the underlying table
-    for (int i = 0; i < table.size(); i++) { // i < DEFAULT_TABLE_SIZE
+    for (int i = 0; i < table.size(); i++) {
       final Iterator<Entry<K, V>> iter = table.get(i).iterator();
       while (iter.hasNext()) {
         Entry<K, V> tempVal = iter.next();
